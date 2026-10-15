@@ -47,31 +47,7 @@ if st.session_state.user is None:
 
         if st.button("Forgot password?"):
             st.session_state["show_forgot_password"] = True
-        if st.session_state.get("show_forgot_password", False):
-            st.subheader("Reset your password")
-
-            email = st.text_input(
-                "Enter your registered email address",
-                key="recovery_email"
-            )
-
-            if st.button("Send recovery email"):
-                if email.strip():
-                    try:
-                        db.auth.reset_password_for_email(
-                            email.strip()
-                        )
-
-                        st.success(
-                            "If an account exists for that email, "
-                            "you will receive password recovery instructions."
-                        )
-
-                    except Exception:
-                        st.error(
-                            "We couldn't send the recovery email. "
-                            "Please try again."
-                        )
+        
     with signup_tab:
         with st.form("signup_form"):
             display_name = st.text_input("Your name")

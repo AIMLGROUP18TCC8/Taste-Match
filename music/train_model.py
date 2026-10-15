@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 from IPython.display import display
@@ -6,6 +7,17 @@ from sklearn.preprocessing import StandardScaler
 from pathlib import Path
 df = pd.read_csv(Path(__file__).parent / 'spotify-tracks-dataset.csv')
 df = df.drop(columns=['Unnamed: 0', 'Unnamed: 0.1'], errors='ignore')
+
+
+df = pd.read_csv(Path(__file__).parent / 'spotify-tracks-dataset.csv')
+df = df.drop(columns=['Unnamed: 0', 'Unnamed: 0.1'], errors='ignore')
+
+# Drop completely identical rows
+df = df.drop_duplicates().copy()
+
+# Drop rows with repeated track IDs
+df = df.drop_duplicates(subset=['track_id']).copy()
+
 df.shape
 text_cols = ['track_id', 'artists', 'album_name', 'track_name', 'track_genre']
 numeric_cols = [
@@ -99,6 +111,3 @@ df.to_csv("models/clustered_music.csv", index=False)
 
 print("Music model and supporting files saved successfully!")
 print(df['cluster_name'].value_counts())
-
-
-
