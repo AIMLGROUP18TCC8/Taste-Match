@@ -1,9 +1,12 @@
+# Secrets and environment variables
+.streamlit/
 secrets.toml
-.streamlit/secrets.toml
 .env
 .env.*
 !.env.example
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
