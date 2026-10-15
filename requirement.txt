@@ -1,5 +1,7 @@
+supabase
 streamlit
+joblib
 pandas
 numpy
 scikit-learn
-joblib
+supabase
